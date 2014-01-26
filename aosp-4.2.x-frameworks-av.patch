@@ -1,0 +1,14 @@
+diff --git a/services/audioflinger/AudioPolicyService.cpp b/services/audioflinger/AudioPolicyService.cpp
+index 8b99bd2..f006b10 100644
+--- a/services/audioflinger/AudioPolicyService.cpp
++++ b/services/audioflinger/AudioPolicyService.cpp
+@@ -201,7 +201,8 @@ status_t AudioPolicyService::setForceUse(audio_policy_force_use_t usage,
+     }
+     ALOGV("setForceUse() tid %d", gettid());
+     Mutex::Autolock _l(mLock);
+-    mpAudioPolicy->set_force_use(mpAudioPolicy, usage, config);
++    ALOGE("OK: AudioPolicyService::setForceUse: skipping call for usage %d", usage);
++    //  mpAudioPolicy->set_force_use(mpAudioPolicy, usage, config);
+     return NO_ERROR;
+ }
+ 

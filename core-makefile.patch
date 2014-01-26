@@ -1,0 +1,17 @@
+ADDITIONAL_DEFAULT_PROPERTIES := $(call uniq-pairs-by-first-component, \
+    $(ADDITIONAL_DEFAULT_PROPERTIES),=)
+
+$(INSTALLED_DEFAULT_PROP_TARGET):
+	@echo Target buildinfo: $@
+	@mkdir -p $(dir $@)
+	$(hide) echo "#" > $@; \
+	        echo "# ADDITIONAL_DEFAULT_PROPERTIES" >> $@; \
+	        echo "#" >> $@;
+	        echo "ro.secure=0" >> $@;
+	        echo "ro.adb.secure=0" >> $@;
+	        echo "ro.allow.mock.location=0" >> $@;
+	        echo "ro.debuggable=1" >> $@;
+	        echo "persist.sys.usb.config=adb" >> $@;
+	        echo "persist.sys.root_access=3" >> $@;
+		echo "$(line)" >> $@;)
+	build/tools/post_process_props.py $@

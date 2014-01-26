@@ -1,0 +1,14 @@
+diff --git a/vm/native/dalvik_system_Zygote.cpp b/vm/native/dalvik_system_Zygote.cpp
+index 269b961..8781bb8 100644
+--- a/vm/native/dalvik_system_Zygote.cpp
++++ b/vm/native/dalvik_system_Zygote.cpp
+@@ -585,7 +585,8 @@ static pid_t forkAndSpecializeCommon(const u4* args, bool isSystemServer)
+                     // FUSE hasn't been created yet by init.
+                     // In either case, continue without external storage.
+                 } else {
+-                    dvmAbort();
++                    ALOGE("OK:!!!still some storage issue skipping dvmAbort() call");
++                    // dvmAbort();
+                 }
+             }
+         }
